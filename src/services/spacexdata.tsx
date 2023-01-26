@@ -9,7 +9,6 @@ const getSpacexData = async() => {
 
 export const spacexApi = createApi({
   reducerPath: 'spacexApi',
-  // baseQuery: fetchBaseQuery({ baseUrl: 'https://api.spacexdata.com/' }),
   baseQuery: getSpacexData,
   endpoints: (builder) => ({
     getAllSpacex: builder.query<Spacex[], void>({
