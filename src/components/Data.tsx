@@ -12,6 +12,9 @@ const Data = () => {
   } = useGetAllSpacexQuery();
 
   console.log(allSpacexData);
+  
+  const length = allSpacexData?.length;
+  console.log('the length of the data is', length);
 
   if (isLoading) return <h1> Loading...</h1>;
   
@@ -20,18 +23,37 @@ const Data = () => {
       <Row gutter={[24, 24]}>
         <Col span={8}>
           {
-            allSpacexData?.map(spaceData => (
+            allSpacexData?.map(spacexData => (
               <div>
-                <h2>Mission: {spaceData.mission_name}</h2>
-                <p>{spaceData.details}</p>
-                <h4>{spaceData.launch_year}</h4>
-                <h4>{spaceData.launch_success}</h4>
+                <h2>{spacexData.rocket?.rocket_name}</h2>
+                <h3>Mission: {spacexData.mission_name}</h3>
+                <h4>Launched in: {spacexData.launch_year}</h4>
               </div>
-            )).slice(0, 15)
+            )).slice(0, 37)
           }
         </Col>
-        <Col span={8}>2</Col>
-        <Col span={8}>3</Col>
+        <Col span={8}>
+          {
+            allSpacexData?.map(spacexData => (
+              <div>
+                <h2>{spacexData.rocket?.rocket_name}</h2>
+                <h3>Mission: {spacexData.mission_name}</h3>
+                <h4>Launched in: {spacexData.launch_year}</h4>
+              </div>
+            )).slice(37, 74)
+          }
+        </Col>
+        <Col span={8}>
+          {
+            allSpacexData?.map(spacexData => (
+              <div>
+                <h2>{spacexData.rocket?.rocket_name}</h2>
+                <h3>Mission: {spacexData.mission_name}</h3>
+                <h4>Launched in: {spacexData.launch_year}</h4>
+              </div>
+            )).slice(74, 111)
+          }
+        </Col>
       </Row>
     </div>
   );
